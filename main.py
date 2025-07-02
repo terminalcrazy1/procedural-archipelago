@@ -4,7 +4,7 @@ def gen_clusters(center_distance=10, max_attempts=1, num_clusters=1677, screen_x
     for _ in range(num_clusters):
         attempts = 0
         while attempts < max_attempts:
-            new_cluster = (np.random.randint(screen_x), np.random.randint(screen_y))
+            new_cluster = (np.random.randint(center_distance, screen_x-center_distance), np.random.randint(center_distance, screen_y-center_distance))
             for old_cluster_x, old_cluster_y in just_clusters:
                 distance = np.sqrt((new_cluster[0] - old_cluster_x)^2 + (new_cluster[1] - old_cluster_y)^2)
                 if distance < center_distance:
