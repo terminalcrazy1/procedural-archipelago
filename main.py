@@ -25,11 +25,9 @@ def generate_points(num_clusters, width=4096, height=4096):
         new_points = []
         future_points = np.random.randint(0, 30)
         for _ in range(future_points):
-            point_ofst_x = np.random.randint(-30, 30)
-            point_ofst_y = np.random.randint(-30, 30)
 
-            generated_point = (cluster_center_x + point_ofst_x,
-                               cluster_center_y + point_ofst_y)
+            generated_point = (cluster_center_x + np.random.randint(-30, 30),
+                               cluster_center_y + np.random.randint(-30, 30))
             new_points.append(generated_point)
         old_points.append(new_points)
     return old_points
