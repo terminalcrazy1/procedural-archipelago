@@ -3,7 +3,6 @@ import numpy as np
 def generate_points(num_clusters, width=4096, height=4096):
     old_points = []
     old_clusters = []
-    minimum_distance = 30 * 4
 
     for _ in range(num_clusters):
         for _ in range(10):
@@ -14,7 +13,7 @@ def generate_points(num_clusters, width=4096, height=4096):
                     (new_cluster[0] - old_cluster_x)**2 +
                     (new_cluster[1] - old_cluster_y)**2
                 )
-                if distance_between_clusters < minimum_distance:
+                if distance_between_clusters < 120:
                     break
             else:
                 old_clusters.append(new_cluster)
