@@ -1,48 +1,35 @@
 import numpy as np
 
-def generate_points(number_of_clusters, area_width=4096, area_height=4096):
-    """
-    Generates clusters of points within a specified area.
-
-    Args:
-        number_of_clusters (int): The desired number of clusters.
-        area_width (int, optional): The width of the area. Defaults to 4096.
-        area_height (int, optional): The height of the area. Defaults to 4096.
-
-    Returns:
-        list: A list of lists, where each inner list contains points belonging
-              to a single cluster.
-    """
-    all_points = []
-    just_clusters = []
+def generate_points(num_clusters, width=4096, height=4096):
+    old_points = []
+    old_clusters = []
     minimum_distance = 30 * 4
 
-    for _ in range(number_of_clusters):
+    for _ in range(num_clusters):
         attempts_count = 0
-        while attempts_count < 1:
-            new_cluster_candidate = (np.random.randint(30, area_width - 30),
-                                     np.random.randint(30, area_height - 30))
-            for existing_cluster_x, existing_cluster_y in just_clusters:
+        for _ in range(10):
+            new_cluster = (np.random.randint(30, width - 30),
+                                     np.random.randint(30, height - 30))
+            for old_cluster_x, old_cluster_y in old_clusters:
                 distance_between_clusters = np.sqrt(
-                    (new_cluster_candidate[0] - existing_cluster_x)**2 +
-                    (new_cluster_candidate[1] - existing_cluster_y)**2
+                    (new_cluster[0] - old_cluster_x)**2 +
+                    (new_cluster[1] - old_cluster_y)**2
                 )
                 if distance_between_clusters < minimum_distance:
-                    attempts_count += 1
                     break
             else:
-                just_clusters.append(new_cluster_candidate)
+                old_clusters.append(new_cluster)
                 break
 
-    for cluster_center_x, cluster_center_y in just_clusters:
+    for cluster_center_x, cluster_center_y in old_clusters:
         new_points = []
-        num_points_to_generate = np.random.randint(0, 30)
-        for _ in range(num_points_to_generate):
-            offset_x = np.random.randint(-30, 30)
-            offset_y = np.random.randint(-30, 30)
+        future_points = np.random.randint(0, 30)
+        for _ in range(future_points):
+            point_ofst_x = np.random.randint(-30, 30)
+            point_ofst_y = np.random.randint(-30, 30)
 
-            generated_point = (cluster_center_x + offset_x,
-                               cluster_center_y + offset_y)
+            generated_point = (cluster_center_x + point_ofst_x,
+                               cluster_center_y + point_ofst_y)
             new_points.append(generated_point)
-        all_points.append(new_points)
-    return all_points
+        old_points.append(new_points)
+    return old_points
