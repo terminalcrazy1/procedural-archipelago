@@ -30,7 +30,7 @@ def generate_points(number_of_clusters, screen_width=4096, screen_height=4096):
                 if distance_between_clusters < minimum_distance:
                     attempts_count += 1
                     break
-            else:  # No break occurred, meaning candidate is far enough
+            else:
                 just_clusters.append(new_cluster_candidate)
                 break
 
