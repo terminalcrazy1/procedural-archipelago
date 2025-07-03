@@ -20,7 +20,7 @@ def generate_points(number_of_clusters, screen_width=4096, screen_height=4096):
     for _ in range(number_of_clusters):
         attempts_count = 0
         while attempts_count < 1:
-            new_cluster_candidate = (np.random.randint(30, screen_witdth - 30),
+            new_cluster_candidate = (np.random.randint(30, screen_width - 30),
                                      np.random.randint(30, screen_height - 30))
             for existing_cluster_x, existing_cluster_y in just_clusters:
                 distance_between_clusters = np.sqrt(
