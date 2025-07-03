@@ -1,13 +1,13 @@
 import numpy as np
 
-def generate_points(number_of_clusters, screen_width=4096, screen_height=4096):
+def generate_points(number_of_clusters, area_width=4096, area_height=4096):
     """
-    Generates clusters of points within a specified screen area.
+    Generates clusters of points within a specified area.
 
     Args:
         number_of_clusters (int): The desired number of clusters.
-        screen_width (int, optional): The width of the screen. Defaults to 4096.
-        screen_height (int, optional): The height of the screen. Defaults to 4096.
+        area_width (int, optional): The width of the area. Defaults to 4096.
+        area_height (int, optional): The height of the area. Defaults to 4096.
 
     Returns:
         list: A list of lists, where each inner list contains points belonging
@@ -20,8 +20,8 @@ def generate_points(number_of_clusters, screen_width=4096, screen_height=4096):
     for _ in range(number_of_clusters):
         attempts_count = 0
         while attempts_count < 1:
-            new_cluster_candidate = (np.random.randint(30, screen_width - 30),
-                                     np.random.randint(30, screen_height - 30))
+            new_cluster_candidate = (np.random.randint(30, area_width - 30),
+                                     np.random.randint(30, area_height - 30))
             for existing_cluster_x, existing_cluster_y in just_clusters:
                 distance_between_clusters = np.sqrt(
                     (new_cluster_candidate[0] - existing_cluster_x)**2 +
