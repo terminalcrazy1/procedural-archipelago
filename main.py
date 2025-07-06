@@ -22,10 +22,10 @@ def generate_points(num_clusters, width=4096, height=4096):
 
     for cluster_center_x, cluster_center_y in old_clusters:
         new_points = []
-        future_points = ri(0, 30)
-        for _ in range(future_points):
-            generated_point = (cluster_center_x + ri(-30, 30),
-                               cluster_center_y + ri(-30, 30))
+        for num_point in range(360):
+            generated_point_y = ri(0,30)/sqrt(Tan(num_point)+1)
+            generated_point_x = generated_point_y*Tan(num_point)
+            generated_point(generated_point_x,generated_point_y)
             new_points.append(generated_point)
         old_points.append(new_points)
     return old_points
