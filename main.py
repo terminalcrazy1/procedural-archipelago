@@ -32,6 +32,6 @@ def generate_points(num_clusters, width=4096, height=4096):
                 mth.sin(ray_angle))
             old_ray_length = new_ray_length
             generated_point = (generated_point_x, generated_point_y)
-        new_points.append(generated_point)
+            new_points.append(generated_point)
         old_points.append(new_points)
     return old_points
