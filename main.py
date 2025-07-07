@@ -20,9 +20,18 @@ def generate_points(num_clusters, width=4096, height=4096):
 
     for cluster_center_x, cluster_center_y in old_clusters:
         new_points = []
-        ## Start New Generation Logic
-
-        ## End New Generation Logic
+        old_ray_length = rnd.randint(0, 30)
+        for num_point in range(45):
+            ray_angle = mth.radians(num_point * 8)
+            new_ray_length = rnd.randint(old_ray_length - 2, old_ray_length + 2)
+            generated_point_x = (cluster_center_x +
+                new_ray_length *
+                mth.cos(ray_angle))
+            generated_point_y = (cluster_center_y +
+                new_ray_length *
+                mth.sin(ray_angle))
+            old_ray_length = new_ray_length
+            generated_point = (generated_point_x, generated_point_y)
         new_points.append(generated_point)
         old_points.append(new_points)
     return old_points
