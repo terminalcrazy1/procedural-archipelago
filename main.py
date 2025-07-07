@@ -23,5 +23,6 @@ def generate_points(num_clusters, width=4096, height=4096):
         ## Start New Generation Logic
 
         ## End New Generation Logic
+        new_points.append(generated_point)
         old_points.append(new_points)
     return old_points
