@@ -1,4 +1,4 @@
-import math
+import math as mth
 import random as rnd
 def generate_points(num_clusters, width=4096, height=4096):
     old_points = []
@@ -6,9 +6,9 @@ def generate_points(num_clusters, width=4096, height=4096):
 
     for _ in range(num_clusters):
         for _ in range(10):
-            new_cluster = (randint(30, width - 30), randint(30, height - 30))
+            new_cluster = (rnd.randint(30, width - 30), rnd.randint(30, height - 30))
             for old_cluster_x, old_cluster_y in old_clusters:
-                distance_between_clusters = sqrt(
+                distance_between_clusters = mth.sqrt(
                     (new_cluster[0] - old_cluster_x)**2 +
                     (new_cluster[1] - old_cluster_y)**2
                 )
